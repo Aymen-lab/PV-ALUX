@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import productWindow from "@/assets/product-window.jpg";
 import productDoor from "@/assets/product-door.jpg";
 import productVeranda from "@/assets/product-veranda.jpg";
@@ -41,75 +42,119 @@ const products = [
 ];
 
 const Products = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section id="produits" className="py-20 md:py-28 bg-background">
+    <section id="produits" className="py-20 md:py-28 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-4">
-            Nos Produits
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Une Gamme Complète pour <span className="text-primary">Tous Vos Projets</span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Découvrez notre sélection de menuiseries aluminium haut de gamme, 
-            adaptées au climat tunisien.
-          </p>
-        </div>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div className="max-w-xl">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-4">
+              Nos Produits
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Une Gamme Complète pour <span className="text-primary">Tous Vos Projets</span>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Découvrez notre sélection de menuiseries aluminium haut de gamme, 
+              adaptées au climat tunisien.
+            </p>
+          </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {products.map((product, index) => (
-            <div
-              key={product.id}
-              className="group relative bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover-lift"
-              style={{ animationDelay: `${index * 0.1}s` }}
+          {/* Navigation Arrows */}
+          <div className="flex gap-3">
+            <button
+              onClick={() => scroll("left")}
+              className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              aria-label="Précédent"
             >
-              {/* Image */}
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              aria-label="Suivant"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {product.title}
-                  </h3>
-                  <span className="shrink-0 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-semibold">
-                    {product.startingPrice}
-                  </span>
-                </div>
-                
-                <p className="text-muted-foreground mb-4">{product.description}</p>
-                
-                {/* Features */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {product.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-medium"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-
-                <Button variant="outline" className="w-full group/btn" asChild>
-                  <a href="#contact">
-                    Demander un Devis
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
+      {/* Horizontal Scroll Gallery */}
+      <div
+        ref={scrollContainerRef}
+        className="flex gap-6 overflow-x-auto scrollbar-hide px-4 md:px-[max(1rem,calc((100vw-1280px)/2+1rem))] pb-4 snap-x snap-mandatory"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="group flex-shrink-0 w-[320px] md:w-[380px] bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover-lift snap-start"
+          >
+            {/* Image */}
+            <div className="aspect-[4/3] overflow-hidden relative">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              {/* Price Badge */}
+              <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-bold shadow-lg">
+                {product.startingPrice}
               </div>
             </div>
-          ))}
-        </div>
+
+            {/* Content */}
+            <div className="p-5">
+              <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                {product.title}
+              </h3>
+              
+              <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{product.description}</p>
+              
+              {/* Features */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {product.features.map((feature) => (
+                  <span
+                    key={feature}
+                    className="px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-medium"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+
+              <Button variant="outline" className="w-full group/btn" asChild>
+                <a href="#contact">
+                  Demander un Devis
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Scroll Indicator for Mobile */}
+      <div className="flex justify-center gap-2 mt-6 md:hidden">
+        {products.map((product, index) => (
+          <div
+            key={product.id}
+            className="w-2 h-2 rounded-full bg-primary/30"
+          />
+        ))}
       </div>
     </section>
   );

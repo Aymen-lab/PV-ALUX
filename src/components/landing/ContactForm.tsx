@@ -19,6 +19,7 @@ const projectTypes = [
   "Baies Coulissantes",
   "Vérandas",
   "Garde-Corps",
+  "Projet Complet",
   "Autre"
 ];
 
@@ -35,17 +36,14 @@ const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate required fields
     if (!formData.name || !formData.phone || !formData.gouvernorat) {
       toast.error("Veuillez remplir les champs obligatoires");
       return;
     }
 
-    // Here you would normally send the form data to your backend
     console.log("Form submitted:", formData);
-    toast.success("Demande envoyée ! Nous vous contacterons sous 24h.");
+    toast.success("Demande envoyée avec succès ! Nous vous recontactons sous 24h.");
     
-    // Reset form
     setFormData({
       name: "",
       phone: "",
@@ -57,80 +55,75 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-secondary/30">
+    <section id="contact" className="py-24 md:py-32 bg-cream">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Column - Info */}
           <div>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-4">
-              Contact
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Demandez Votre <span className="text-primary">Devis Gratuit</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-accent" />
+              <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
+                Contact
+              </span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6">
+              Parlons de <span className="text-gradient-gold">Votre Projet</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Remplissez le formulaire et recevez votre devis personnalisé 
-              sous 24 heures. Sans engagement.
+            <p className="text-muted-foreground text-lg font-light mb-10 leading-relaxed">
+              Remplissez le formulaire pour recevoir votre devis personnalisé 
+              sous 24 heures. Consultation gratuite et sans engagement.
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-6 mb-8">
-              <a href="tel:+21671234567" className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Phone className="w-6 h-6 text-primary" />
+            <div className="space-y-6 mb-10">
+              <a href="tel:+21671234567" className="flex items-center gap-5 group">
+                <div className="w-16 h-16 border border-charcoal/20 flex items-center justify-center group-hover:bg-charcoal group-hover:border-charcoal transition-all duration-300">
+                  <Phone className="w-6 h-6 text-charcoal group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Téléphone</div>
-                  <div className="font-semibold text-foreground text-lg">+216 71 234 567</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Téléphone</div>
+                  <div className="font-display text-xl text-foreground">+216 71 234 567</div>
                 </div>
               </a>
 
-              <a href="https://wa.me/21698765432" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-xl bg-whatsapp/10 flex items-center justify-center group-hover:bg-whatsapp/20 transition-colors">
-                  <MessageCircle className="w-6 h-6 text-whatsapp" />
+              <a href="https://wa.me/21698765432" target="_blank" rel="noopener noreferrer" className="flex items-center gap-5 group">
+                <div className="w-16 h-16 border border-whatsapp/30 flex items-center justify-center group-hover:bg-whatsapp group-hover:border-whatsapp transition-all duration-300">
+                  <MessageCircle className="w-6 h-6 text-whatsapp group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">WhatsApp</div>
-                  <div className="font-semibold text-foreground text-lg">+216 98 765 432</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">WhatsApp</div>
+                  <div className="font-display text-xl text-foreground">+216 98 765 432</div>
                 </div>
               </a>
 
-              <a href="mailto:contact@alupro.tn" className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-6 h-6 text-primary" />
+              <a href="mailto:contact@alupro.tn" className="flex items-center gap-5 group">
+                <div className="w-16 h-16 border border-charcoal/20 flex items-center justify-center group-hover:bg-charcoal group-hover:border-charcoal transition-all duration-300">
+                  <Mail className="w-6 h-6 text-charcoal group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Email</div>
-                  <div className="font-semibold text-foreground text-lg">contact@alupro.tn</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Email</div>
+                  <div className="font-display text-xl text-foreground">contact@alupro.tn</div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-primary" />
+              <div className="flex items-center gap-5">
+                <div className="w-16 h-16 border border-charcoal/20 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-charcoal" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Adresse</div>
-                  <div className="font-semibold text-foreground">Zone Industrielle, Tunis</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Showroom</div>
+                  <div className="font-display text-xl text-foreground">Zone Industrielle, Tunis</div>
                 </div>
               </div>
             </div>
-
-            {/* WhatsApp CTA */}
-            <Button variant="whatsapp" size="lg" className="w-full sm:w-auto" asChild>
-              <a href="https://wa.me/21698765432" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5" />
-                Contacter via WhatsApp
-              </a>
-            </Button>
           </div>
 
           {/* Right Column - Form */}
-          <div className="bg-card rounded-2xl p-6 md:p-8 shadow-lg border border-border">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+          <div className="bg-white p-8 md:p-10 shadow-elegant border border-border">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">
                     Nom complet *
                   </label>
                   <Input
@@ -138,11 +131,12 @@ const ContactForm = () => {
                     placeholder="Votre nom"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="border-border focus:border-accent rounded-none h-12"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">
                     Téléphone *
                   </label>
                   <Input
@@ -150,13 +144,14 @@ const ContactForm = () => {
                     placeholder="+216 XX XXX XXX"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="border-border focus:border-accent rounded-none h-12"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">
                   Email
                 </label>
                 <Input
@@ -164,19 +159,20 @@ const ContactForm = () => {
                   placeholder="votre@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="border-border focus:border-accent rounded-none h-12"
                 />
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">
                     Gouvernorat *
                   </label>
                   <Select
                     value={formData.gouvernorat}
                     onValueChange={(value) => setFormData({ ...formData, gouvernorat: value })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="border-border focus:border-accent rounded-none h-12">
                       <SelectValue placeholder="Sélectionner" />
                     </SelectTrigger>
                     <SelectContent>
@@ -189,14 +185,14 @@ const ContactForm = () => {
                   </Select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">
                     Type de projet
                   </label>
                   <Select
                     value={formData.projectType}
                     onValueChange={(value) => setFormData({ ...formData, projectType: value })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="border-border focus:border-accent rounded-none h-12">
                       <SelectValue placeholder="Sélectionner" />
                     </SelectTrigger>
                     <SelectContent>
@@ -211,24 +207,25 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Votre message
+                <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">
+                  Votre projet
                 </label>
                 <Textarea
-                  placeholder="Décrivez votre projet..."
+                  placeholder="Décrivez-nous votre projet..."
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="border-border focus:border-accent rounded-none resize-none"
                 />
               </div>
 
-              <Button variant="hero" size="lg" type="submit" className="w-full">
+              <Button variant="gold" size="lg" type="submit" className="w-full">
                 <Send className="w-5 h-5" />
                 Envoyer ma demande
               </Button>
 
-              <p className="text-sm text-muted-foreground text-center">
-                En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe.
+              <p className="text-xs text-muted-foreground text-center">
+                En soumettant ce formulaire, vous acceptez d'être recontacté par notre équipe.
               </p>
             </form>
           </div>

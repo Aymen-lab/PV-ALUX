@@ -9,35 +9,39 @@ import productGuardrail from "@/assets/product-guardrail.jpg";
 const products = [
   {
     id: 1,
-    title: "Fenêtres Aluminium",
-    description: "Fenêtres coulissantes, à battant et oscillo-battantes. Isolation thermique et acoustique supérieure.",
+    title: "Fenêtres",
+    subtitle: "Aluminium Premium",
+    description: "Élégance et performance thermique supérieure pour votre intérieur.",
     image: productWindow,
-    features: ["Double vitrage", "Isolation thermique", "Anti-effraction"],
-    startingPrice: "À partir de 450 DT/m²",
+    features: ["Double vitrage", "Isolation optimale", "Design épuré"],
+    startingPrice: "450 DT/m²",
   },
   {
     id: 2,
     title: "Portes d'Entrée",
-    description: "Portes d'entrée sécurisées et élégantes. Design personnalisable selon vos goûts.",
+    subtitle: "Sécurité & Style",
+    description: "Premières impressions inoubliables avec nos portes sur mesure.",
     image: productDoor,
-    features: ["Haute sécurité", "Design moderne", "Sur mesure"],
-    startingPrice: "À partir de 1200 DT",
+    features: ["Haute sécurité", "Finitions luxe", "Sur mesure"],
+    startingPrice: "1200 DT",
   },
   {
     id: 3,
-    title: "Baies Coulissantes",
-    description: "Baies vitrées panoramiques pour une luminosité maximale et une vue dégagée.",
+    title: "Baies Vitrées",
+    subtitle: "Panoramiques",
+    description: "Ouvrez votre espace sur l'extérieur avec une luminosité maximale.",
     image: productVeranda,
-    features: ["Grande ouverture", "Rails invisibles", "Luminosité max"],
-    startingPrice: "À partir de 800 DT/m²",
+    features: ["Grande ouverture", "Rails discrets", "Vue panoramique"],
+    startingPrice: "800 DT/m²",
   },
   {
     id: 4,
     title: "Garde-Corps",
-    description: "Garde-corps en aluminium et verre pour balcons, terrasses et escaliers.",
+    subtitle: "Verre & Aluminium",
+    description: "Sécurité et esthétique pour balcons, terrasses et escaliers.",
     image: productGuardrail,
-    features: ["Verre trempé", "Inoxydable", "Design épuré"],
-    startingPrice: "À partir de 350 DT/ml",
+    features: ["Verre trempé", "Inoxydable", "Minimaliste"],
+    startingPrice: "350 DT/ml",
   },
 ];
 
@@ -46,7 +50,7 @@ const Products = () => {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 400;
+      const scrollAmount = 420;
       scrollContainerRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -55,20 +59,22 @@ const Products = () => {
   };
 
   return (
-    <section id="produits" className="py-20 md:py-28 bg-background overflow-hidden">
+    <section id="produits" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div className="max-w-xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-4">
-              Nos Produits
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Une Gamme Complète pour <span className="text-primary">Tous Vos Projets</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-accent" />
+              <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
+                Collection
+              </span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
+              Nos Créations <span className="text-gradient-gold">d'Exception</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Découvrez notre sélection de menuiseries aluminium haut de gamme, 
-              adaptées au climat tunisien.
+            <p className="text-muted-foreground text-lg font-light">
+              Une sélection raffinée de menuiseries aluminium, conçues pour sublimer votre habitat.
             </p>
           </div>
 
@@ -76,14 +82,14 @@ const Products = () => {
           <div className="flex gap-3">
             <button
               onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="w-14 h-14 border border-charcoal/20 flex items-center justify-center text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300"
               aria-label="Précédent"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="w-14 h-14 border border-charcoal/20 flex items-center justify-center text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300"
               aria-label="Suivant"
             >
               <ChevronRight className="w-6 h-6" />
@@ -95,41 +101,50 @@ const Products = () => {
       {/* Horizontal Scroll Gallery */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide px-4 md:px-[max(1rem,calc((100vw-1280px)/2+1rem))] pb-4 snap-x snap-mandatory"
+        className="flex gap-6 overflow-x-auto px-4 md:px-[max(1rem,calc((100vw-1280px)/2+1rem))] pb-4 snap-x snap-mandatory"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {products.map((product) => (
           <div
             key={product.id}
-            className="group flex-shrink-0 w-[320px] md:w-[380px] bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover-lift snap-start"
+            className="group flex-shrink-0 w-[340px] md:w-[400px] bg-card overflow-hidden shadow-md hover:shadow-elegant transition-all duration-700 snap-start"
           >
             {/* Image */}
             <div className="aspect-[4/3] overflow-hidden relative">
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               />
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
+              
               {/* Price Badge */}
-              <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-bold shadow-lg">
-                {product.startingPrice}
+              <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/95 backdrop-blur-sm">
+                <span className="text-xs text-muted-foreground uppercase tracking-wider">À partir de</span>
+                <span className="block font-display text-lg text-charcoal">{product.startingPrice}</span>
               </div>
             </div>
 
             {/* Content */}
-            <div className="p-5">
-              <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
-                {product.title}
-              </h3>
+            <div className="p-6 border-t border-border">
+              <div className="mb-3">
+                <span className="text-accent text-xs tracking-[0.15em] uppercase">{product.subtitle}</span>
+                <h3 className="font-display text-2xl text-foreground group-hover:text-accent transition-colors duration-300">
+                  {product.title}
+                </h3>
+              </div>
               
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{product.description}</p>
+              <p className="text-muted-foreground text-sm mb-5 font-light leading-relaxed">
+                {product.description}
+              </p>
               
               {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {product.features.map((feature) => (
                   <span
                     key={feature}
-                    className="px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-medium"
+                    className="px-3 py-1 border border-border text-xs text-muted-foreground uppercase tracking-wider"
                   >
                     {feature}
                   </span>
@@ -144,16 +159,6 @@ const Products = () => {
               </Button>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Scroll Indicator for Mobile */}
-      <div className="flex justify-center gap-2 mt-6 md:hidden">
-        {products.map((product, index) => (
-          <div
-            key={product.id}
-            className="w-2 h-2 rounded-full bg-primary/30"
-          />
         ))}
       </div>
     </section>

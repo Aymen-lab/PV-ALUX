@@ -152,7 +152,7 @@ const Products = () => {
               </div>
 
               <Button variant="outline" className="w-full group/btn" asChild>
-                <a href="#contact">
+                <a href="https://wa.me/21625765000" target="_blank" rel="noopener noreferrer">
                   Demander un Devis
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </a>

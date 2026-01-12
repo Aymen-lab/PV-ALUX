@@ -73,7 +73,7 @@ const Header = () => {
               <span className="hidden lg:inline">71 234 567</span>
             </a>
             <Button variant={isScrolled ? "gold" : "hero-glass"} size="sm" asChild>
-              <a href="#contact">Devis Gratuit</a>
+              <a href="https://wa.me/21625765000" target="_blank" rel="noopener noreferrer">Devis Gratuit</a>
             </Button>
           </div>
 
@@ -103,7 +103,7 @@ const Header = () => {
               ))}
               <div className="flex flex-col gap-3 pt-6">
                 <Button variant="gold" asChild>
-                  <a href="#contact">Demander un Devis</a>
+                  <a href="https://wa.me/21625765000" target="_blank" rel="noopener noreferrer">Demander un Devis</a>
                 </Button>
                 <Button variant="outline" asChild>
                   <a href="tel:+21671234567">

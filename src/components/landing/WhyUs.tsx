@@ -1,4 +1,9 @@
 import { Shield, Award, Truck, Wrench, Clock, ThumbsUp } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const features = [
   {
@@ -35,7 +40,7 @@ const features = [
 
 const WhyUs = () => {
   return (
-    <section id="avantages" className="py-24 md:py-32 bg-charcoal relative overflow-hidden">
+    <section id="avantages" className="py-20 md:py-32 bg-charcoal relative overflow-hidden">
       {/* Subtle Pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
@@ -50,7 +55,7 @@ const WhyUs = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-20">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent" />
             <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
@@ -58,18 +63,48 @@ const WhyUs = () => {
             </span>
             <div className="w-8 h-px bg-accent" />
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
+          <h2 className="font-display text-3xl md:text-5xl text-white mb-4 md:mb-6">
             L'Excellence au <span className="text-gradient-gold">Quotidien</span>
           </h2>
-          <p className="text-white/60 text-lg font-light">
-            Depuis plus de 15 ans, nous accompagnons nos clients avec passion, 
-            professionnalisme et un souci constant du détail.
+          <p className="text-white/60 text-base md:text-lg font-light">
+            Depuis plus de 15 ans, nous accompagnons nos clients avec passion et professionnalisme.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
-          {features.map((feature, index) => (
+        {/* Mobile Carousel */}
+        <div className="md:hidden">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {features.map((feature) => (
+                <CarouselItem key={feature.title} className="pl-4 basis-[85%]">
+                  <div className="p-6 bg-charcoal-light border border-white/10 h-full">
+                    <div className="w-14 h-14 border border-accent/30 flex items-center justify-center mb-5 bg-accent/5">
+                      <feature.icon className="w-6 h-6 text-accent" />
+                    </div>
+                    <h3 className="font-display text-lg text-white mb-2">{feature.title}</h3>
+                    <p className="text-white/50 text-sm font-light leading-relaxed">{feature.description}</p>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            {/* Swipe indicator */}
+            <div className="flex justify-center mt-6 gap-1.5">
+              {features.map((_, index) => (
+                <div key={index} className="w-1.5 h-1.5 rounded-full bg-white/20" />
+              ))}
+            </div>
+          </Carousel>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+          {features.map((feature) => (
             <div
               key={feature.title}
               className="group p-8 md:p-10 bg-charcoal hover:bg-charcoal-light transition-all duration-500"

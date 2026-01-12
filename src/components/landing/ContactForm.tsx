@@ -106,15 +106,21 @@ const ContactForm = () => {
                 </div>
               </a>
 
-              <div className="flex items-center gap-5">
-                <div className="w-16 h-16 border border-charcoal/20 flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-charcoal" />
+              <a 
+                href="https://maps.google.com/?q=Zone+Industrielle,+Tunis,+Tunisie" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 group"
+              >
+                <div className="w-16 h-16 border border-charcoal/20 flex items-center justify-center group-hover:bg-charcoal group-hover:border-charcoal transition-all duration-300">
+                  <MapPin className="w-6 h-6 text-charcoal group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Showroom</div>
-                  <div className="font-display text-xl text-foreground">Zone Industrielle, Tunis</div>
+                  <div className="font-display text-xl text-foreground group-hover:text-accent transition-colors">Zone Industrielle, Tunis</div>
+                  <div className="text-xs text-accent mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Voir sur Google Maps →</div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 

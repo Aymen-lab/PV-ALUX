@@ -5,8 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // GitHub Pages base path for repository: PV-ALUX
-  base: '/PV-ALUX/',
+  base: mode === "production" ? "/PV-ALUX/" : "/",   // GitHub Pages in production, root for local dev
   server: {
     host: "::",
     port: 8080,

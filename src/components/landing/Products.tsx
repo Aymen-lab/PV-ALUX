@@ -14,34 +14,70 @@ const products = [
     description: "Élégance et performance thermique supérieure pour votre intérieur.",
     image: productWindow,
     features: ["Double vitrage", "Isolation optimale", "Design épuré"],
-    startingPrice: "450 DT/m²",
+    startingPrice: "250 DT",
   },
   {
     id: 2,
-    title: "Portes d'Entrée",
+    title: "Facade Mur Rideau",
+    subtitle: "Architecture Moderne",
+    description: "Solutions architecturales pour façades vitrées contemporaines.",
+    image: productVeranda,
+    features: ["Grande surface", "Design contemporain", "Haute performance"],
+    startingPrice: "600 DT",
+  },
+  {
+    id: 3,
+    title: "Portes",
     subtitle: "Sécurité & Style",
     description: "Premières impressions inoubliables avec nos portes sur mesure.",
     image: productDoor,
     features: ["Haute sécurité", "Finitions luxe", "Sur mesure"],
-    startingPrice: "1200 DT",
+    startingPrice: "600 DT",
   },
   {
-    id: 3,
+    id: 4,
     title: "Baies Vitrées",
     subtitle: "Panoramiques",
     description: "Ouvrez votre espace sur l'extérieur avec une luminosité maximale.",
     image: productVeranda,
     features: ["Grande ouverture", "Rails discrets", "Vue panoramique"],
-    startingPrice: "800 DT/m²",
+    startingPrice: "500 DT",
   },
   {
-    id: 4,
+    id: 5,
     title: "Garde-Corps",
     subtitle: "Verre & Aluminium",
     description: "Sécurité et esthétique pour balcons, terrasses et escaliers.",
     image: productGuardrail,
     features: ["Verre trempé", "Inoxydable", "Minimaliste"],
-    startingPrice: "350 DT/ml",
+    startingPrice: "180 DT/ml",
+  },
+  {
+    id: 6,
+    title: "Volet Roulant",
+    subtitle: "Confort & Protection",
+    description: "Protection solaire et isolation thermique optimales.",
+    image: productWindow,
+    features: ["Motorisé", "Isolation", "Sécurité"],
+    startingPrice: "120 DT/m²",
+  },
+  {
+    id: 7,
+    title: "Brise Soleil",
+    subtitle: "Design & Efficacité",
+    description: "Contrôle de la lumière naturelle avec élégance.",
+    image: productGuardrail,
+    features: ["Orientable", "Aluminium", "Esthétique"],
+    startingPrice: "350 DT/m²",
+  },
+  {
+    id: 8,
+    title: "Cloison Agencement",
+    subtitle: "Espaces Modulables",
+    description: "Solutions de cloisonnement pour bureaux et espaces commerciaux.",
+    image: productDoor,
+    features: ["Modulable", "Vitré", "Professionnel"],
+    startingPrice: "250 DT/m²",
   },
 ];
 
@@ -107,7 +143,7 @@ const Products = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="group flex-shrink-0 w-[340px] md:w-[400px] bg-card overflow-hidden shadow-md hover:shadow-elegant transition-all duration-700 snap-start"
+            className="group flex-shrink-0 w-[300px] md:w-[340px] bg-card overflow-hidden shadow-md hover:shadow-elegant transition-all duration-700 snap-start"
           >
             {/* Image */}
             <div className="aspect-[4/3] overflow-hidden relative">
@@ -127,39 +163,47 @@ const Products = () => {
             </div>
 
             {/* Content */}
-            <div className="p-6 border-t border-border">
+            <div className="p-5 border-t border-border">
               <div className="mb-3">
                 <span className="text-accent text-xs tracking-[0.15em] uppercase">{product.subtitle}</span>
-                <h3 className="font-display text-2xl text-foreground group-hover:text-accent transition-colors duration-300">
+                <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300">
                   {product.title}
                 </h3>
               </div>
               
-              <p className="text-muted-foreground text-sm mb-5 font-light leading-relaxed">
+              <p className="text-muted-foreground text-sm mb-4 font-light leading-relaxed line-clamp-2">
                 {product.description}
               </p>
               
               {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              <div className="flex flex-wrap gap-2">
                 {product.features.map((feature) => (
                   <span
                     key={feature}
-                    className="px-3 py-1 border border-border text-xs text-muted-foreground uppercase tracking-wider"
+                    className="px-2 py-1 border border-border text-xs text-muted-foreground uppercase tracking-wider"
                   >
                     {feature}
                   </span>
                 ))}
               </div>
-
-              <Button variant="outline" className="w-full group/btn" asChild>
-                <a href="#contact">
-                  Demander un Devis
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </a>
-              </Button>
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Central CTA Button */}
+      <div className="container mx-auto px-4 mt-12">
+        <div className="flex flex-col items-center text-center">
+          <p className="text-muted-foreground mb-6 font-light">
+            Intéressé par nos produits ? Obtenez un devis personnalisé gratuit.
+          </p>
+          <Button variant="gold" size="lg" className="group" asChild>
+            <a href="#contact">
+              Demander un Devis Gratuit
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
+        </div>
       </div>
     </section>
   );

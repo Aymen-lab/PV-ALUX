@@ -3,8 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import productWindow from "@/assets/product-window.jpg";
 import productDoor from "@/assets/product-door.jpg";
-import productVeranda from "@/assets/product-veranda.jpg";
 import productGuardrail from "@/assets/product-guardrail.jpg";
+import productMurRideau from "@/assets/product-mur-rideau.jpg";
+import productBaieVitree from "@/assets/product-baie-vitree.jpg";
+import productVoletRoulant from "@/assets/product-volet-roulant.jpg";
+import productBriseSoleil from "@/assets/product-brise-soleil.jpg";
+import productCloison from "@/assets/product-cloison.jpg";
 
 const products = [
   {
@@ -21,7 +25,7 @@ const products = [
     title: "Facade Mur Rideau",
     subtitle: "Architecture Moderne",
     description: "Solutions architecturales pour façades vitrées contemporaines.",
-    image: productVeranda,
+    image: productMurRideau,
     features: ["Grande surface", "Design contemporain", "Haute performance"],
     startingPrice: "600 DT",
   },
@@ -39,7 +43,7 @@ const products = [
     title: "Baies Vitrées",
     subtitle: "Panoramiques",
     description: "Ouvrez votre espace sur l'extérieur avec une luminosité maximale.",
-    image: productVeranda,
+    image: productBaieVitree,
     features: ["Grande ouverture", "Rails discrets", "Vue panoramique"],
     startingPrice: "500 DT",
   },
@@ -57,7 +61,7 @@ const products = [
     title: "Volet Roulant",
     subtitle: "Confort & Protection",
     description: "Protection solaire et isolation thermique optimales.",
-    image: productWindow,
+    image: productVoletRoulant,
     features: ["Motorisé", "Isolation", "Sécurité"],
     startingPrice: "120 DT/m²",
   },
@@ -66,7 +70,7 @@ const products = [
     title: "Brise Soleil",
     subtitle: "Design & Efficacité",
     description: "Contrôle de la lumière naturelle avec élégance.",
-    image: productGuardrail,
+    image: productBriseSoleil,
     features: ["Orientable", "Aluminium", "Esthétique"],
     startingPrice: "350 DT/m²",
   },
@@ -75,7 +79,7 @@ const products = [
     title: "Cloison Agencement",
     subtitle: "Espaces Modulables",
     description: "Solutions de cloisonnement pour bureaux et espaces commerciaux.",
-    image: productDoor,
+    image: productCloison,
     features: ["Modulable", "Vitré", "Professionnel"],
     startingPrice: "250 DT/m²",
   },

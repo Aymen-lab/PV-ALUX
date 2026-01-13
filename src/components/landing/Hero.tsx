@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -44,17 +44,11 @@ const Hero = () => {
             Devis personnalisé sous 24h • Partout en Tunisie
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          {/* CTA Button */}
+          <div className="flex items-center justify-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
             <Button variant="gold" size="xl" asChild>
               <a href="#contact">
                 Demander un Devis
-              </a>
-            </Button>
-            <Button variant="hero-glass" size="xl" asChild>
-              <a href="https://wa.me/21698765432" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5" />
-                WhatsApp
               </a>
             </Button>
           </div>
